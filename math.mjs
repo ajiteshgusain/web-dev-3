@@ -9,4 +9,4 @@ function  multiply(num1,num2){
 
 
 
-module.exports={sum,multiply}
+export{sum,multiply}
