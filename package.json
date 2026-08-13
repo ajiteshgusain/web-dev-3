@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/ajiteshgusain/web-dev-3/issues"
   },
-  "homepage": "https://github.com/ajiteshgusain/web-dev-3#readme"
+  "homepage": "https://github.com/ajiteshgusain/web-dev-3#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
