@@ -10,6 +10,11 @@
 // console.log(`product of the numbers:${product}`);
 
 //const {sum,multiply}=require('./math')
-import {sum,multiply} from './math.mjs';
+// this we do  importing in react  for multiple functions   
+
+
+// this we do  importing in react  for single  function   
+
+//import sum from './math.mjs'; 
 console.log(sum(1,2));
-console.log(multiply(2,4));
+//console.log(multiply(2,4));
