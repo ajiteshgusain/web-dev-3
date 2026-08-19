@@ -39,3 +39,14 @@
 
 
 //  path  module
+import path from 'path'
+// '.web dev-3/child.mjs'
+
+console.log(path.sep)
+console.log(path.basename('.web dev-3/child.mjs'))
+console.log(path.extname('.web dev-3/child.mjs'))
+
+console.log(path.dirname('web dev-3/child.mjs'))
+
+console.log(path.resolve('./dev-3/child.mjs'))
+
