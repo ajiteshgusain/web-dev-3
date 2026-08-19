@@ -38,15 +38,33 @@
 // console.log(os.uptime()/60/60)
 
 
-//  path  module
-import path from 'path'
-// '.web dev-3/child.mjs'
+// //  path  module
+// import path from 'path'
+// // '.web dev-3/child.mjs'
 
-console.log(path.sep)
-console.log(path.basename('.web dev-3/child.mjs'))
-console.log(path.extname('.web dev-3/child.mjs'))
+// console.log(path.sep)
+// console.log(path.basename('.web dev-3/child.mjs'))
+// console.log(path.extname('.web dev-3/child.mjs'))
 
-console.log(path.dirname('web dev-3/child.mjs'))
+// console.log(path.dirname('web dev-3/child.mjs'))
 
-console.log(path.resolve('./dev-3/child.mjs'))
+// console.log(path.resolve('dev-3/child.mjs'))
 
+import { error } from 'console'
+import fs from 'fs'
+
+fs.writeFile('./web dev-3/index.html','<p> i am  Ajit',(error)=>{
+    if (error){
+        console.log(error)
+        return
+    }
+})
+
+
+
+fs.mkdir('./web dev-3/newfile',{recursive:true},error=>{
+    if (error){
+        console.log(err)
+        return
+    }
+})
