@@ -16,5 +16,9 @@
 // this we do  importing in react  for single  function   
 
 //import sum from './math.mjs'; 
-console.log(sum(1,2));
+// console.log(sum(1,2));
 //console.log(multiply(2,4));
+
+
+//installs all dependencies of a Node. js project.
+// npm init -y
