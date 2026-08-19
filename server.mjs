@@ -29,10 +29,13 @@
 
 // const  os=require('os')
 
-import os from 'os'
-// console.log(os.type(),os.totalmem())
-console.log(os.totalmem()/1024/1024/1024)
-console.log(os.uptime()/60/60)
 
 
+//  os module
+// import os from 'os'
+// // console.log(os.type(),os.totalmem())
+// console.log(os.totalmem()/1024/1024/1024)
+// console.log(os.uptime()/60/60)
 
+
+//  path  module
