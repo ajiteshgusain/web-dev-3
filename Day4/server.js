@@ -15,9 +15,15 @@ app.get('/',(req,res)=>{
 
 app.post('/user',(req,res)=>{
     let name=req.body.name
+    console.log(name)
+
+    res.status(200).json({
+        message:'data recieved successfully...',
+        success:true
+    })
 
 })
 
-app.listen(3000,()=>{
-    console.log('server created at port',3000)
-})
+// app.listen(3000,()=>{
+//     console.log('server created at port',3000)
+// })
