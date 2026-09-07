@@ -24,6 +24,6 @@ app.post('/user',(req,res)=>{
 
 })
 
-// app.listen(3000,()=>{
-//     console.log('server created at port',3000)
-// })
+app.listen(3000,()=>{
+    console.log('server created at port',3000)
+})
