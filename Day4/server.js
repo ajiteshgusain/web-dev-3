@@ -2,15 +2,15 @@ import   express from  'express'
 
 const app=express()
 
-// app.use(express.json())
-// app.get('/',(req,res)=>{
-//     //res.send('<h1> welcome to express backend')
-//     res.json({
-//         message:'welcome  to express'
-//     })
+app.use(express.json())
+app.get('/',(req,res)=>{
+    //res.send('<h1> welcome to express backend')
+    res.json({
+        message:'welcome  to express'
+    })
 
 
-// })
+})
 
 
 // app.post('/user',(req,res)=>{
@@ -26,7 +26,7 @@ const app=express()
 
 let user=['ajitesh','abhi','mummy','papa']
 
-app.get('/getuser',(res,req)=>{
+app.get('/getuser',(req,res)=>{
     res.status(200).json({
         message:'data  recived  successfully...',
         user
@@ -66,7 +66,7 @@ app.put('/updateuser',(req,res)=>{
 
     let  index=user.indexOf(name)
 
-    req.status(200).json({
+    res.status(200).json({
         message:'user  updated successfully',
         user
     })
