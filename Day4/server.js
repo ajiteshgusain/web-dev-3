@@ -36,3 +36,38 @@ app.get('/getuser',(res,req)=>{
 app.listen(3000,()=>{
     console.log('server created at port',3000)
 })
+
+
+app.post('/createuser',(req,res)=>{
+    let name=req.body.name
+    if(!name){
+        return res.status(404).json(
+            {
+                message:'data  not  found'
+
+            }
+        )
+    }
+    user.push(name)
+    res.status(200).json({
+        message:'data created successfully...',
+        user,
+        success:true
+    })
+})
+
+
+
+
+app.put('/updateuser',(req,res)=>{
+    let name=req.body.name
+    let newname=req.body.newname
+
+
+    let  index=user.indexOf(name)
+
+    req.status(200).json({
+        message:'user  updated successfully',
+        user
+    })
+})
