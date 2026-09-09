@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const fileName = "test.txt";
 
-// --------------------
+// -----------------
 // 1. CREATE FILE
 // --------------------
 

@@ -1,6 +1,6 @@
 // calculator.js
 
-// Get command-line arguments
+// Get command-line argument
 const args = process.argv.slice(2);
 
 // Store the arguments
