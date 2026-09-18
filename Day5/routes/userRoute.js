@@ -5,6 +5,7 @@ const router=express.Router()
 
 // as  data  is recevied  from  front end
 router.get("/user",getuser)
+router.post('/user',createUser)
 
 export default  router
 
