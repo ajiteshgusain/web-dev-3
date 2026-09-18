@@ -1,8 +1,19 @@
 [
-    {"name":"selena","age":20,"id":1},
-    {"name":"liv","age":16,"id":2},
-    {"name":"saphippe","age":21,"id":3},
-    {"name":"shouxe","age":17,"id":4}
+    {"name":"selena",
+    "age":20,
+    "id":1},
+    
+    {"name":"liv",
+    "age":16,
+    "id":2},
+    
+    {"name":"saphippe",
+    "age":21,
+    "id":3},
+    
+    {"name":"shouxe",
+    "age":17,
+    "id":4}
 ]
 
 
