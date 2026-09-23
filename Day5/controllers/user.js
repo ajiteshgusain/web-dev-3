@@ -53,39 +53,28 @@ const getuser = (req,res)=>{
     })
 }
 
+const createUser = (req, res) => {
+    let { name, age, id } = req.body
 
-
-const createUser = (req,res)=>{
-
-    let {name, age, id} = req.body
-
-    if(!name || !age || !id){
-        res.status(404).json({
-            message : 'data not found for creation....',
-            success:false
+    if (!name || !age || !id) {
+        return res.status(404).json({
+            message: 'data not found for creation....',
+            success: false
         })
     }
 
+    let data = fs.readFileSync('./database/data.json', 'utf-8')
+    data = JSON.parse(data)
 
-     let data = fs.readFileSync('./database/data.json', 'utf-8')
+    data.push({ name, age, id })
 
-     data = JSON.parse(data)
+    fs.writeFileSync('./database/data.json', JSON.stringify(data, null, 3))
 
-     data.push({name, age , id})
-
-     fs.writeFileSync('./database/data.json', JSON.stringify(data, null, 3))
-
-
-     res.status(200).json({
-        message:'data created successfully...',
-        success:true,
+    res.status(200).json({
+        message: 'data created successfully...',
+        success: true,
         data
-     })
-
-
-    
-    
-
+    })
 }
 
 const updateUser = (req,res)=>{
