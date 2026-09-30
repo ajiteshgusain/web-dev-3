@@ -1,16 +1,19 @@
 import express from 'express'
-import  morgan from 'morgan'
 
-import  cors from 'cors`'
+import morgan from 'morgan'
+
+import cors from 'cors'
+
 
 app.use(cors({
-    origin:"http:"
-
+    origin:"*"
 }))
+
 const app = express()
 
 const port = 3000
 
+// app.use(morgan("dev"))
 
 // app.use(express.static('public'))
 
@@ -31,16 +34,17 @@ function logger(req, res, next) {
     console.log(req.method)
 
     console.log(req.url)
-    console.log(res.statusCode)
 
-    next()
+    console.log(res.statusCode)
+ 
+    next() 
 
 }
 
 // app.use(middleware1)
 
 
-app.get('/user', middleware1, logger, (req, res) => {
+app.get('/user', morgan("dev") , logger,  (req, res) => {
 
     // console.log(req.body)
 
@@ -50,10 +54,11 @@ app.get('/user', middleware1, logger, (req, res) => {
 })
 
 
-app.get('/about', morgan("dev"),(req, res) => {
+app.get('/about' ,  morgan("dev") ,  (req, res) => {
     console.log('this is about logic.....')
-     res.send('this is function logic')
-})
+    res.send('this is function logic')
+}) 
+
 
 app.listen(port, () => {
     console.log('server has started at port : ', port)
