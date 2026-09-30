@@ -1,5 +1,12 @@
 import express from 'express'
 import  morgan from 'morgan'
+
+import  cors from 'cors`'
+
+app.use(cors({
+    origin:"http:"
+
+}))
 const app = express()
 
 const port = 3000
@@ -24,7 +31,7 @@ function logger(req, res, next) {
     console.log(req.method)
 
     console.log(req.url)
-    console.log(req.statusCode)
+    console.log(res.statusCode)
 
     next()
 
