@@ -20,27 +20,48 @@
 
 // //----------------------------------------------------------------------------------------
 
-// //  starting    the  HTTP  Server(http.createServer)
+import    http from 'http'
 
-// import http  from 'http'
+const server=http.createServer((res,req)=>{
+   //  handle   get  request  for the  home page
+    if(req.url==='/' &&  req.method==='GET'){
 
-// const server=http.createServer((req,res)=>{
-//     if(req.url==='/' &&  req.method === 'GET'){
-//         res.end('<h1>welcome  to backend</h1>')
-    
-//     }else if(req.url === '/about' && req.method ==='GET'){
-//         res.end('<h1> this is my first  page  created using  backend</h1>')
+        res.writeHead(200,{'content-Type':'text/html'});
+        res.end('<h1>welcome  to  backend   now  you alive.</h1>');
+    }
 
-//     }else{
-//         res.end('page not found')
-//     }
+//  handle   get  request  for  the    the aboutwebpage
+    else if(req.url ==='/about' && req.method ==='GET'){
+        res.writeHead({'Content-Type':'text/html'});
+        res.end('<h1>this  is  about page</h1>');
+}
+ 
 
-// })
+   else if(req.url==='/contact' &&  req.method==="GET"){
+    res.writeHead(200,{'Content-Type':'application/json'});
 
-// const port=3000;
+    res.end(JSON.stringify({
+        message:'this is the contact page',
+        success:true
+    }))
+   }
 
-// server.listen(port,()=>{
-//     console.log('server  has   started at port:->',port)
-// })
+   else{
+    res.writeHead(404,{'Conent-Type':'text/html'})
+    res.end('<h1>404: page  not  found</h1>');
+
+   }
+
+})
+
+const port=3000;
+server.listen(port,()=>{
+    console.log('server has  started at  port:',port);
+})
+
+
+
+
+
 //---------------------------------------------------------------------------
 // day3
