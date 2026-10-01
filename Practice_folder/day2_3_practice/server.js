@@ -22,7 +22,7 @@
 
 import    http from 'http'
 
-const server=http.createServer((res,req)=>{
+const server=http.createServer((req,res)=>{
    //  handle   get  request  for the  home page
     if(req.url==='/' &&  req.method==='GET'){
 
@@ -32,7 +32,7 @@ const server=http.createServer((res,req)=>{
 
 //  handle   get  request  for  the    the aboutwebpage
     else if(req.url ==='/about' && req.method ==='GET'){
-        res.writeHead({'Content-Type':'text/html'});
+        res.writeHead(200,{'Content-Type':'text/html'});
         res.end('<h1>this  is  about page</h1>');
 }
  
@@ -47,7 +47,7 @@ const server=http.createServer((res,req)=>{
    }
 
    else{
-    res.writeHead(404,{'Conent-Type':'text/html'})
+    res.writeHead(404,{'Content-Type':'text/html'});
     res.end('<h1>404: page  not  found</h1>');
 
    }
