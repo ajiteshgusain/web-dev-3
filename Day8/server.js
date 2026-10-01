@@ -1,12 +1,40 @@
-import  express  from 'express';
+import express from "express";
+
+const app = express()
+
+app.get('/user', (req, res) => {
+
+    try {
+
+        console.log('this is main logic')
+
+        res.json({
+            message: 'this is main logic...'
+        })
+
+    } catch (error) {
+
+        res.json({
+            message:'somthing went wrong....',
+            error:error.message
+        })
+
+    }
 
 
- const app=express()
+})
 
-  const port=3000
+function checkRoute(req,res, next){
+    res.send('api did not defined....')
 
-  app.get('user',(req,res)=>{
-    console.log(' this main logic');
-  })
+}
 
-  app.listen()
+app.use(checkRoute)
+
+
+
+const port = 3000
+
+app.listen(port, () => {
+    console.log('server has started at port : ', port);
+})
