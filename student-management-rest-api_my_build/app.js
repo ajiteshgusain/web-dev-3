@@ -15,3 +15,16 @@ app.use((req,res)=>{
         error:'routes  not  found'
     })
 });
+
+
+app.use((err,req,res,next)=>{
+    console.error(err.stack);
+
+    res.status(500).json({
+        error:'internal  server  error'
+    });
+});
+
+app.listen(port,()=>{
+    console.log(`server  running  at http://localhost:${port}`);
+});
