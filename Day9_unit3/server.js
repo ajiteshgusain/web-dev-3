@@ -135,3 +135,10 @@ db
 //     {course:'BTech'},
 //     {$set : {course : 'BCA'}}
 // )
+
+
+
+// db.students.updateMany(
+//     {course:'BTech'},
+//     {$set : {course : 'BCA'}}
+// )
