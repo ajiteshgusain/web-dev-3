@@ -2,7 +2,7 @@ import express from 'express'
 
 const app = express()
 
-import connectDB from './database/mogodb.js'
+import connectDB from './database/mongodb.js'
 
 connectDB()
 

@@ -1,15 +1,13 @@
 import mongoose from "mongoose";
 
-async function connectDB() {
-    try {
-        await mongoose.connect('mongodb://127.0.0.1:27017/BTechAIML')
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect("mongodb://127.0.0.1:27017/myDatabase");
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    process.exit(1);
+  }
+}; 
 
-        console.log('database connected successfully....')
-
-    } catch (error) {
-        console.log('failed to connect to database....')
-    }
-}
-
-export default connectDB
-
+export default connectDB;
