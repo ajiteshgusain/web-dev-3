@@ -10,7 +10,7 @@ let products = [
   { productId: "1", productName: "Laptop", cost: 1200 },
   { productId: "2", productName: "Mouse", cost: 25 }
 ];
-
+ 
 // ==========================================
 // 1. GET Request: Retrieve all products
 // ==========================================
