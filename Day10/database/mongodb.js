@@ -11,4 +11,5 @@ const connectDB = async () => {
 }; 
 
 export default connectDB;
-//////
+
+//note : if  server is hosted  on your  system then  we  call it  (local host)
