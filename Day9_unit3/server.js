@@ -95,54 +95,135 @@
 // // db.students.deleteOne({
 // //      _id: 1
 // // })
-// // db.students.deleteOne({
-// //       _id: ObjectId('6ac364e7de22a642f9cf8c10')
-// // })
+// // // db.students.deleteOne({
+// // //       _id: ObjectId('6ac364e7de22a642f9cf8c10')
+// // // })
 
-// // db.students.deleteMany({
-// //     gender: 'female'
-// // })
+// // // db.students.deleteMany({
+// // //     gender: 'female'
+// // // })
 
 
 
-// // db.students.insertMany([
-// //      {
+// // // db.students.insertMany([
+// // //      {
  
-// //     name: 'Swati',
-// //     age: 25,
-// //     gender: 'female',
-// //     course: 'BCA',
-// //     cgpa: 9.8
-// //   },
-// //   {
+// // //     name: 'Swati',
+// // //     age: 25,
+// // //     gender: 'female',
+// // //     course: 'BCA',
+// // //     cgpa: 9.8
+// // //   },
+// // //   {
   
-// //     name: 'Payal',
-// //     age: 30,
-// //     gender: 'female',
-// //     course: 'BCA',
-// //     cgpa: 6.5
-// //   }
-// // ])
+// // //     name: 'Payal',
+// // //     age: 30,
+// // //     gender: 'female',
+// // //     course: 'BCA',
+// // //     cgpa: 6.5
+// // //   }
+// // // ])
 
 
 
-// // db.students.updateOne(
-// //     { _id: ObjectId('6ac5c2ee20b81feb7fa4df26') },
-// //     { $set : {name : 'Ankit Singh'} }
-// // )
+// // // db.students.updateOne(
+// // //     { _id: ObjectId('6ac5c2ee20b81feb7fa4df26') },
+// // //     { $set : {name : 'Ankit Singh'} }
+// // // )
 
-// // db.students.updateMany(
-// //     {course:'BTech'},
-// //     {$set : {course : 'BCA'}}
-// // )
-
-
-
-// // db.students.updateMany(
-// //     {course:'BTech'},
-// //     {$set : {course : 'BCA'}}
-// // )
+// // // db.students.updateMany(
+// // //     {course:'BTech'},
+// // //     {$set : {course : 'BCA'}}
+// // // )
 
 
-// //=======================================
-// //Agregration pipeline
+
+// // // db.students.updateMany(
+// // //     {course:'BTech'},
+// // //     {$set : {course : 'BCA'}}
+// // // )
+
+
+// // //=======================================
+// // //Agregration pipeline
+
+
+// db.student.aggregate([{
+//     $project:{
+//         name:1
+
+//     }
+// }
+
+// ])
+
+
+// db.student.aggregate([
+//     {
+//         $match : {
+//             age : {
+//                 $gte : 20
+//             }
+//         }
+//     }
+// ])
+
+
+// db.student.aggregate([
+//     {
+//         $project : {
+//             name: 1
+//         }
+//     }
+// ])
+// db.aggregate([{
+//     $sort:{age:1}
+// }])
+
+
+
+
+//  db.student.aggregate([{
+//      $sort:{age:1}
+//  }])
+
+
+db.student.aggregate([{$sort:{
+    age:-1
+},
+$project:{name:1},
+
+{ $match:{
+    name:'selena'
+}}
+
+}])
+
+
+
+
+db.student.aggregate([
+    {$sort:{
+    age:-1}},
+{$project:{name:1,age:1}},
+    
+{ $match:{
+    name:'selena'
+}}
+
+])
+
+
+db.student.aggregate([{
+    $group:{
+        _id:"$name",
+        total:{$sum:1}
+    }
+}
+    
+])
+
+db.student.aggregate([{
+    $limit:3
+}
+])
