@@ -1,5 +1,8 @@
 // // // faqct  mongodb  offical  name  mongod
 // // // show dbs
+// use myDatabaseName
+// show collections
+
 
 // // // use BTechRobotics -> create  database
 // // //db  current :-  current   database
@@ -227,3 +230,8 @@
 //     $limit:3
 // }
 // ])
+
+//------------------------------------------------
+//4|11|26
+
+// 
