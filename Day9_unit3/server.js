@@ -1,237 +1,487 @@
-// // // faqct  mongodb  offical  name  mongod
-// // // show dbs
-// use myDatabaseName
-// show collections
+// // // // faqct  mongodb  offical  name  mongod
+// // // // show dbs
+// // use myDatabaseName
+// // show collections
 
 
-// // // use BTechRobotics -> create  database
-// // //db  current :-  current   database
+// // // // use BTechRobotics -> create  database
+// // // //db  current :-  current   database
 
-// // // here  collection ->  table
-// // //  document ->  rows
-// // // here ObjectId->primary key
-// // // in mongodb  data type  of this  ObjectId  is   objectid only
-// // //  db.createcollection('teachers')
-// // // db.students.insertOne({
-// //  //      name:'Ankit',
-// //  //      Age:24,
-// // //})
-// // //db.stdudents.insertmany()
+// // // // here  collection ->  table
+// // // //  document ->  rows
+// // // // here ObjectId->primary key
+// // // // in mongodb  data type  of this  ObjectId  is   objectid only
+// // // //  db.createcollection('teachers')
+// // // // db.students.insertOne({
+// // //  //      name:'Ankit',
+// // //  //      Age:24,
+// // // //})
+// // // //db.stdudents.insertmany()
 
-// // //db.student.find()
-// // //db.student.insertMany([ {name:'data1', age:24}, {name:'data2', age:15}, {name:'data', age:12} ])
-// // //db.student.deleteOne({ _id: ObjectId("65c2a1b3e4b0f123456789ab") })
+// // // //db.student.find()
+// // // //db.student.insertMany([ {name:'data1', age:24}, {name:'data2', age:15}, {name:'data', age:12} ])
+// // // //db.student.deleteOne({ _id: ObjectId("65c2a1b3e4b0f123456789ab") })
 
-// // //db.student.deleteMany({})
+// // // //db.student.deleteMany({})
 
-// // //db.student.updateOne(
-// // //   { name: 'selena' }, 
-// // //   { $set: { age: 21 } }
-// // // )
-// // // show dbs
+// // // //db.student.updateOne(
+// // // //   { name: 'selena' }, 
+// // // //   { $set: { age: 21 } }
+// // // // )
+// // // // show dbs
 
-// // // use BTechRobotics
+// // // // use BTechRobotics
 
-// // db
-
-
-// // // show collections 
+// // // db
 
 
-// // // db.createCollection('teachers')
+// // // // show collections 
 
 
-// // // db.students.insertOne({
-// // //     name:"Ankit",
-// // //     age:24,
-// // //     _id:1
-// // // })
-
-// // // db.students.find()
-
-// // // db.students.insertOne({
-// // //     name:"Ankit",
-// // //     age:24
-// // // })
+// // // // db.createCollection('teachers')
 
 
-// // // db.students.insertMany([
-// // //     {
-// // //         name: 'Ankit',
-// // //         age:19,
-// // //         gender:'male',
-// // //         course:'BTech',
-// // //         cgpa:9
-// // //     },
-// // //     {
-// // //         name: 'Rahul',
-// // //         age:22,
-// // //         gender:'male',
-// // //         course:'BTech',
-// // //         cgpa:7
-// // //     },
-// // //     {
-// // //         name: 'Swati',
-// // //         age:25,
-// // //         gender:'female',
-// // //         course:'BCA',
-// // //         cgpa:9.8
-// // //     },
-// // //     {
-// // //         name: 'Payal',
-// // //         age:30,
-// // //         gender:'female',
-// // //         course:'BCA',
-// // //         cgpa:6.5
-// // //     },
-// // //     {
-// // //         name: 'Jigar',
-// // //         age:17,
-// // //         gender:'male',
-// // //         course:'MCA',
-// // //         cgpa:10
-// // //     },
-// // // ])
-
-
-
-// // // db.students.deleteOne({
-// // //      _id: 1
-// // // })
-// // // // db.students.deleteOne({
-// // // //       _id: ObjectId('6ac364e7de22a642f9cf8c10')
+// // // // db.students.insertOne({
+// // // //     name:"Ankit",
+// // // //     age:24,
+// // // //     _id:1
 // // // // })
 
-// // // // db.students.deleteMany({
-// // // //     gender: 'female'
-// // // // })
+// // // // db.students.find()
 
+// // // // db.students.insertOne({
+// // // //     name:"Ankit",
+// // // //     age:24
+// // // // })
 
 
 // // // // db.students.insertMany([
-// // // //      {
- 
-// // // //     name: 'Swati',
-// // // //     age: 25,
-// // // //     gender: 'female',
-// // // //     course: 'BCA',
-// // // //     cgpa: 9.8
-// // // //   },
-// // // //   {
-  
-// // // //     name: 'Payal',
-// // // //     age: 30,
-// // // //     gender: 'female',
-// // // //     course: 'BCA',
-// // // //     cgpa: 6.5
-// // // //   }
+// // // //     {
+// // // //         name: 'Ankit',
+// // // //         age:19,
+// // // //         gender:'male',
+// // // //         course:'BTech',
+// // // //         cgpa:9
+// // // //     },
+// // // //     {
+// // // //         name: 'Rahul',
+// // // //         age:22,
+// // // //         gender:'male',
+// // // //         course:'BTech',
+// // // //         cgpa:7
+// // // //     },
+// // // //     {
+// // // //         name: 'Swati',
+// // // //         age:25,
+// // // //         gender:'female',
+// // // //         course:'BCA',
+// // // //         cgpa:9.8
+// // // //     },
+// // // //     {
+// // // //         name: 'Payal',
+// // // //         age:30,
+// // // //         gender:'female',
+// // // //         course:'BCA',
+// // // //         cgpa:6.5
+// // // //     },
+// // // //     {
+// // // //         name: 'Jigar',
+// // // //         age:17,
+// // // //         gender:'male',
+// // // //         course:'MCA',
+// // // //         cgpa:10
+// // // //     },
 // // // // ])
 
 
 
-// // // // db.students.updateOne(
-// // // //     { _id: ObjectId('6ac5c2ee20b81feb7fa4df26') },
-// // // //     { $set : {name : 'Ankit Singh'} }
-// // // // )
+// // // // db.students.deleteOne({
+// // // //      _id: 1
+// // // // })
+// // // // // db.students.deleteOne({
+// // // // //       _id: ObjectId('6ac364e7de22a642f9cf8c10')
+// // // // // })
 
-// // // // db.students.updateMany(
-// // // //     {course:'BTech'},
-// // // //     {$set : {course : 'BCA'}}
-// // // // )
-
-
-
-// // // // db.students.updateMany(
-// // // //     {course:'BTech'},
-// // // //     {$set : {course : 'BCA'}}
-// // // // )
+// // // // // db.students.deleteMany({
+// // // // //     gender: 'female'
+// // // // // })
 
 
-// // // //=======================================
-// // // //Agregration pipeline
+
+// // // // // db.students.insertMany([
+// // // // //      {
+ 
+// // // // //     name: 'Swati',
+// // // // //     age: 25,
+// // // // //     gender: 'female',
+// // // // //     course: 'BCA',
+// // // // //     cgpa: 9.8
+// // // // //   },
+// // // // //   {
+  
+// // // // //     name: 'Payal',
+// // // // //     age: 30,
+// // // // //     gender: 'female',
+// // // // //     course: 'BCA',
+// // // // //     cgpa: 6.5
+// // // // //   }
+// // // // // ])
 
 
-// // db.student.aggregate([{
-// //     $project:{
-// //         name:1
 
-// //     }
-// // }
+// // // // // db.students.updateOne(
+// // // // //     { _id: ObjectId('6ac5c2ee20b81feb7fa4df26') },
+// // // // //     { $set : {name : 'Ankit Singh'} }
+// // // // // )
 
-// // ])
-
-
-// // db.student.aggregate([
-// //     {
-// //         $match : {
-// //             age : {
-// //                 $gte : 20
-// //             }
-// //         }
-// //     }
-// // ])
+// // // // // db.students.updateMany(
+// // // // //     {course:'BTech'},
+// // // // //     {$set : {course : 'BCA'}}
+// // // // // )
 
 
-// // db.student.aggregate([
-// //     {
-// //         $project : {
-// //             name: 1
-// //         }
-// //     }
-// // ])
-// // db.aggregate([{
-// //     $sort:{age:1}
+
+// // // // // db.students.updateMany(
+// // // // //     {course:'BTech'},
+// // // // //     {$set : {course : 'BCA'}}
+// // // // // )
+
+
+// // // // //=======================================
+// // // // //Agregration pipeline
+
+
+// // // db.student.aggregate([{
+// // //     $project:{
+// // //         name:1
+
+// // //     }
+// // // }
+
+// // // ])
+
+
+// // // db.student.aggregate([
+// // //     {
+// // //         $match : {
+// // //             age : {
+// // //                 $gte : 20
+// // //             }
+// // //         }
+// // //     }
+// // // ])
+
+
+// // // db.student.aggregate([
+// // //     {
+// // //         $project : {
+// // //             name: 1
+// // //         }
+// // //     }
+// // // ])
+// // // db.aggregate([{
+// // //     $sort:{age:1}
+// // // }])
+
+
+
+
+// // //  db.student.aggregate([{
+// // //      $sort:{age:1}
+// // //  }])
+
+
+// // db.student.aggregate([{$sort:{
+// //     age:-1
+// // },
+// // $project:{name:1},
+
+// // { $match:{
+// //     name:'selena'
+// // }}
+
 // // }])
 
 
 
 
-// //  db.student.aggregate([{
-// //      $sort:{age:1}
-// //  }])
-
-
-// db.student.aggregate([{$sort:{
-//     age:-1
-// },
-// $project:{name:1},
-
-// { $match:{
-//     name:'selena'
-// }}
-
-// }])
-
-
-
-
-// db.student.aggregate([
-//     {$sort:{
-//     age:-1}},
-// {$project:{name:1,age:1}},
+// // db.student.aggregate([
+// //     {$sort:{
+// //     age:-1}},
+// // {$project:{name:1,age:1}},
     
-// { $match:{
-//     name:'selena'
-// }}
+// // { $match:{
+// //     name:'selena'
+// // }}
 
+// // ])
+
+
+// // db.student.aggregate([{
+// //     $group:{
+// //         _id:"$name",
+// //         total:{$sum:1}
+// //     }
+// // }
+    
+// // ])
+
+// // db.student.aggregate([{
+// //     $limit:3
+// // }
+// // ])
+
+// //------------------------------------------------
+// //4|11|26
+
+// // 
+
+
+// // use myDatabaseName
+// // show collections
+
+// // show dbs
+
+// // use BTechRobotics
+
+// db
+
+
+// // show collections 
+
+
+// // db.createCollection('teachers')
+
+
+// // db.students.insertOne({
+// //     name:"Ankit",
+// //     age:24,
+// //     _id:1
+// // })
+
+// // db.students.find()
+
+// db.students.insertOne({
+//     name:"Ankit",
+//     age:24
+// })
+
+
+// db.students.insertMany([
+//     {
+//         name: 'Ankit',
+//         age:19,
+//         gender:'male',
+//         course:'BTech',
+//         cgpa:9
+//     },
+//     {
+//         name: 'Rahul',
+//         age:22,
+//         gender:'male',
+//         course:'BTech',
+//         cgpa:7
+//     },
+//     {
+//         name: 'Swati',
+//         age:25,
+//         gender:'female',
+//         course:'BCA',
+//         cgpa:9.8
+//     },
+//     {
+//         name: 'Payal',
+//         age:30,
+//         gender:'female',
+//         course:'BCA',
+//         cgpa:6.5
+//     },
+//     {
+//         name: 'Jigar',
+//         age:17,
+//         gender:'male',
+//         course:'MCA',
+//         cgpa:10
+//     },
 // ])
 
 
-// db.student.aggregate([{
-//     $group:{
-//         _id:"$name",
-//         total:{$sum:1}
+
+// db.students.deleteOne({
+//      _id: 1
+// })
+// db.students.deleteOne({
+//       _id: ObjectId('6ac364e7de22a642f9cf8c10')
+// })
+
+// db.students.deleteMany({
+//     gender: 'female'
+// })
+
+
+
+// db.students.insertMany([
+//      {
+ 
+//     name: 'Swati',
+//     age: 25,
+//     gender: 'female',
+//     course: 'BCA',
+//     cgpa: 9.8
+//   },
+//   {
+  
+//     name: 'Payal',
+//     age: 30,
+//     gender: 'female',
+//     course: 'BCA',
+//     cgpa: 6.5
+//   }
+// ])
+
+
+
+// db.students.updateOne(
+//     { _id: ObjectId('6ac5c2ee20b81feb7fa4df26') },
+//     { $set : {name : 'Ankit Singh'} }
+// )
+
+// db.students.updateMany(
+//     {course:'BTech'},
+//     {$set : {course : 'BCA'}}
+// )
+
+
+
+// // db.students.find({
+// //     name : 'Ankit Singh'
+// // })
+
+
+// db.students.find(
+//     {gender : {$eq : 'female'}}
+// )
+
+
+
+
+// db.students.find(
+//     {age : {$gt : 25}}
+// )
+
+
+
+// db.students.find(
+//     {$and : [{gender : {$eq : 'female'}} , {age : {$gt : 16}}] }
+// )
+
+
+// db.students.find({
+//     $or : [{course : {$eq : 'MCA'}},  {gender : {$eq : 'female'}}]
+// })
+
+
+//     db.students.find({
+//         gender : {$not : { $eq:  'female'}}
+//     })
+
+
+
+
+
+//     db.students.find({
+//        _id :  {$nin : [ObjectId('6ac5c2ee20b81feb7fa4df26'), ObjectId('6ac5c2ee20b81feb7fa4df2a')]}
+//     })
+
+
+//     // aggregation Pipeline.......
+
+// // db.students.aggregate([
+// //     {
+// //         $match :{
+// //             gender : 'female'
+// //         }
+// //     }
+// // ])
+
+ 
+// // db.students.aggregate([
+// //     {
+// //         $match :{
+// //             cgpa : {$gt : 7}
+// //         }
+// //     }
+// // ])
+
+
+// // db.students.aggregate([
+// //     {
+// //         $match : {
+// //             cgpa: { $gte : 9 }
+// //         }
+// //     }
+// // ])
+
+
+// db.students.aggregate([
+//     {
+//         $project : {
+//             name: 1,
+//             age: 1,
+            
+//         }
 //     }
-// }
+// ])
+
+
+
+// db.students.aggregate([
+//     {
+//         $sort:{
+//             age: -1
+//         }
+//     },
+
+//     {
+//         $match: {
+//             gender : 'female'
+//         }
+//     },
+
+//     {
+//         $project:{
+//             name:1,
+//             _id:0
+//         }
+//     }
+
     
+
 // ])
 
-// db.student.aggregate([{
-//     $limit:3
-// }
+
+// db.students.aggregate([
+//     {
+//         $group : {
+//             _id : '$course',
+//             total: {$sum : 1}
+//         }
+//     }
 // ])
 
-//------------------------------------------------
-//4|11|26
+// // db.students.aggregate([
+// //     {
+// //         $group : {
+// //             _id : '$gender',
+// //             total: {$sum : 1}
+// //         }
+// //     }
+// // ])
 
-// 
+
+
+// db.students.aggregate([
+//     {
+//         $limit : 3
+//     }
+// ])
