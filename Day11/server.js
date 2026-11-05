@@ -1,1 +1,12 @@
 import express  from  'express'
+
+const app=express()
+
+import connectDB from './database/mongodb.js';
+
+connectDB()
+
+const port=3000
+app.listen(port,()=>{
+    console.log(`server has started at port http://localhost:${port}:`)
+})
