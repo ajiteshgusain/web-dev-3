@@ -1,5 +1,7 @@
 import User from "../model/userModel.js"
 
+import bcrpyt from  from 'bcrypt'
+
 const signup = async (req,res)=>{
     try {
         const {name, email, password, role} = req.body
@@ -11,6 +13,8 @@ const signup = async (req,res)=>{
             })
         }
 
+        let user=wait User.find({email})
+
 
 
 
@@ -18,3 +22,9 @@ const signup = async (req,res)=>{
         
     }
 }
+
+
+
+
+
+export {signup}
