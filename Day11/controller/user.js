@@ -31,11 +31,19 @@ const signup = async (req,res)=>{
         name, email, role, password : hashpassword
     })
 
+    res.status(200).jsson({
+        message:"data  created  successfully!!!",
+        success:true
+
+    })
+
 
 
     } catch (error) {
+        console.log(error)
         res.status(500).json({
-            message:'failed to create user',error,
+            message:'failed to create user',
+            error,
             success:false
         })
     }
@@ -88,4 +96,6 @@ const login = async (req,res)=>{
 }
 
 
- export {signup , login}
+
+
+ export default {signup,login}
