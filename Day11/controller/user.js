@@ -31,7 +31,7 @@ const signup = async (req,res)=>{
         name, email, role, password : hashpassword
     })
 
-    res.status(200).jsson({
+    res.status(200).json({
         message:"data  created  successfully!!!",
         success:true
 
@@ -70,7 +70,7 @@ const login = async (req,res)=>{
         })
     }
 
-    if(bcrypt.compare(password, user.password)){
+    if(await bcrypt.compare(password, user.password)){
 
         res.status(200).json({
             message:'user login....',
@@ -98,4 +98,4 @@ const login = async (req,res)=>{
 
 
 
- export default {signup,login}
+ export {signup,login};
