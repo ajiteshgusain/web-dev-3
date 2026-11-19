@@ -2,6 +2,8 @@ import User from "../model/userModel.js"
 
 import bcrypt from 'bcrypt'
 
+import jwt from 'jsonwebtoken' 
+
 const signup = async (req,res)=>{
     try {
         const {name, email, password, role} = req.body
@@ -31,19 +33,17 @@ const signup = async (req,res)=>{
         name, email, role, password : hashpassword
     })
 
-    res.status(200).json({
-        message:"data  created  successfully!!!",
-        success:true
 
+    res.status(200).json({
+        message:'user created successfully...',
+        success:true,
+        user
     })
 
 
-
     } catch (error) {
-        console.log(error)
         res.status(500).json({
-            message:'failed to create user',
-            error,
+            message:'failed to create user',error,
             success:false
         })
     }
@@ -51,7 +51,9 @@ const signup = async (req,res)=>{
 
 const login = async (req,res)=>{
     try {
+         
         const {email , password} = req.body
+ 
 
 
     if(!email || !password){
@@ -72,8 +74,12 @@ const login = async (req,res)=>{
 
     if(await bcrypt.compare(password, user.password)){
 
+        jwt.sign()
+
+
+
         res.status(200).json({
-            message:'user login....',
+            message:'user login successfully....',
             success:true
         })
 
@@ -88,6 +94,9 @@ const login = async (req,res)=>{
 
 
     } catch (error) {
+
+        console.log(error)
+
         return res.status(500).json({
             message:'internal server error',
             success:false
@@ -97,5 +106,4 @@ const login = async (req,res)=>{
 
 
 
-
- export {signup,login};
+ export {signup , login}
