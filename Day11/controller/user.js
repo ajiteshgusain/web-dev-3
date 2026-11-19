@@ -77,7 +77,7 @@ const login = async (req,res)=>{
         let token=jwt.sign(
             {
                 userID:user_id,
-                role:uer.role
+                role:user.role
             },'roboticsAuth',
             {
                 expiresIn:"2hr"
