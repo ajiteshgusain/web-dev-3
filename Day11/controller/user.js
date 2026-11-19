@@ -74,7 +74,16 @@ const login = async (req,res)=>{
 
     if(await bcrypt.compare(password, user.password)){
 
-        jwt.sign()
+        let token=jwt.sign(
+            {
+                userID:user_id,
+                role:uer.role
+            },'roboticsAuth',
+            {
+                expiresIn:"2hr"
+
+            }
+        )
 
 
 
