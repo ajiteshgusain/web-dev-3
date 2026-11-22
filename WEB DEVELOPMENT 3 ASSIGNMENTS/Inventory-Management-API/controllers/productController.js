@@ -1,5 +1,6 @@
 import Product from '../models/Product.js';
 
+// 1. CREATE a new product -> POST /api/products
 export const createProduct = async (req, res, next) => {
   try {
     const product = await Product.create(req.body);
@@ -9,45 +10,44 @@ export const createProduct = async (req, res, next) => {
   }
 };
 
+// 2. GET all products (with filter, search, sort & pagination) -> GET /api/products
 export const getAllProducts = async (req, res, next) => {
   try {
-    const queryObj = {};
+    const query = {};
 
+    // Filter by category or supplier
     if (req.query.category) {
-      queryObj.category = { $regex: req.query.category, $options: 'i' };
+      query.category = { $regex: req.query.category, $options: 'i' };
     }
     if (req.query.supplier) {
-      queryObj.supplier = { $regex: req.query.supplier, $options: 'i' };
+      query.supplier = { $regex: req.query.supplier, $options: 'i' };
     }
 
+    // Search by name or SKU
     if (req.query.search) {
-      queryObj.$or = [
+      query.$or = [
         { name: { $regex: req.query.search, $options: 'i' } },
         { sku: { $regex: req.query.search, $options: 'i' } },
       ];
     }
 
+    // Filter by minPrice and/or maxPrice
     if (req.query.minPrice || req.query.maxPrice) {
-      queryObj.price = {};
-      if (req.query.minPrice) queryObj.price.$gte = Number(req.query.minPrice);
-      if (req.query.maxPrice) queryObj.price.$lte = Number(req.query.maxPrice);
+      query.price = {};
+      if (req.query.minPrice) query.price.$gte = Number(req.query.minPrice);
+      if (req.query.maxPrice) query.price.$lte = Number(req.query.maxPrice);
     }
 
-    let sortBy = '-createdAt';
-    if (req.query.sort) {
-      sortBy = req.query.sort.split(',').join(' ');
-    }
+    // Sort results (default: newest first)
+    const sort = req.query.sort ? req.query.sort.split(',').join(' ') : '-createdAt';
 
+    // Pagination setup (page 1, 10 items per page by default)
     const page = Math.max(1, parseInt(req.query.page, 10) || 1);
     const limit = Math.max(1, parseInt(req.query.limit, 10) || 10);
     const skip = (page - 1) * limit;
 
-    const total = await Product.countDocuments(queryObj);
-    const products = await Product.find(queryObj)
-      .sort(sortBy)
-      .skip(skip)
-      .limit(limit);
-
+    const total = await Product.countDocuments(query);
+    const products = await Product.find(query).sort(sort).skip(skip).limit(limit);
     const totalPages = Math.ceil(total / limit);
 
     res.status(200).json({
@@ -62,6 +62,7 @@ export const getAllProducts = async (req, res, next) => {
   }
 };
 
+// 3. GET single product by ID -> GET /api/products/:id
 export const getProductById = async (req, res, next) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -77,6 +78,7 @@ export const getProductById = async (req, res, next) => {
   }
 };
 
+// 4. UPDATE product details -> PUT /api/products/:id
 export const updateProduct = async (req, res, next) => {
   try {
     const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
@@ -95,13 +97,14 @@ export const updateProduct = async (req, res, next) => {
   }
 };
 
+// 5. ADJUST stock safely (+ for restock, - for sale) -> PATCH /api/products/:id/stock
 export const adjustStock = async (req, res, next) => {
   try {
-    const { change } = req.body;
+    const change = Number(req.body.change);
 
-    if (typeof change !== 'number' || Number.isNaN(change)) {
+    if (req.body.change === undefined || Number.isNaN(change)) {
       res.status(400);
-      throw new Error('Please provide a valid numeric "change" value');
+      throw new Error('Please enter a valid number for change');
     }
 
     const product = await Product.findById(req.params.id);
@@ -111,14 +114,13 @@ export const adjustStock = async (req, res, next) => {
       throw new Error('Product not found');
     }
 
-    if (product.quantity + change < 0) {
+    const newQuantity = product.quantity + change;
+    if (newQuantity < 0) {
       res.status(400);
-      throw new Error(
-        `Insufficient stock. Current stock is ${product.quantity}, cannot deduct ${Math.abs(change)}`
-      );
+      throw new Error(`Not enough stock. Available quantity is ${product.quantity}`);
     }
 
-    product.quantity += change;
+    product.quantity = newQuantity;
     await product.save();
 
     res.status(200).json({
@@ -130,6 +132,7 @@ export const adjustStock = async (req, res, next) => {
   }
 };
 
+// 6. DELETE product -> DELETE /api/products/:id
 export const deleteProduct = async (req, res, next) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
@@ -148,9 +151,10 @@ export const deleteProduct = async (req, res, next) => {
   }
 };
 
+// 7. LOW-STOCK ALERT report (quantity <= reorderLevel) -> GET /api/products/low-stock
 export const getLowStockReport = async (req, res, next) => {
   try {
-    const lowStockDocs = await Product.aggregate([
+    const lowStockItems = await Product.aggregate([
       {
         $match: {
           $expr: { $lte: ['$quantity', '$reorderLevel'] },
@@ -168,14 +172,15 @@ export const getLowStockReport = async (req, res, next) => {
     ]);
 
     res.status(200).json({
-      count: lowStockDocs.length,
-      lowStockItems: lowStockDocs,
+      count: lowStockItems.length,
+      lowStockItems,
     });
   } catch (error) {
     next(error);
   }
 };
 
+// 8. CATEGORY-WISE SUMMARY report -> GET /api/products/summary
 export const getCategorySummary = async (req, res, next) => {
   try {
     const summary = await Product.aggregate([
@@ -184,9 +189,7 @@ export const getCategorySummary = async (req, res, next) => {
           _id: '$category',
           totalItems: { $sum: 1 },
           totalQuantity: { $sum: '$quantity' },
-          totalStockValue: {
-            $sum: { $multiply: ['$price', '$quantity'] },
-          },
+          totalStockValue: { $sum: { $multiply: ['$price', '$quantity'] } },
           avgPrice: { $avg: '$price' },
         },
       },
