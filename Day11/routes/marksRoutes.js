@@ -9,4 +9,4 @@ marksRouter.get('/marks', auth ,  isStudent,  showMarks)
 marksRouter.post('/marks', auth, isTeacher,   createMarks) 
 
 
-export default marksRouter
+export default marksRouter  
